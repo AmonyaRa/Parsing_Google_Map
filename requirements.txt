@@ -1,0 +1,6 @@
+selenium
+requests
+webdriver_manager
+fake-useragent
+bs4
+lxml
