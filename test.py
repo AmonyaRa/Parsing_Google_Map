@@ -1,3 +1,4 @@
+import json
 import time
 
 from fake_useragent import UserAgent
@@ -14,7 +15,8 @@ options.add_argument('--headless')
 options.add_argument(f'user-agent={ua.chrome}')
 options.add_argument('--disable-blink-features=AutomationControlled')
 
-URL = 'https://www.google.com/maps/search/%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D1%8B%D0%B5+%D0%BA%D1%83%D1%80%D1%81%D1%8B+%D0%B2+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%D0%B5/@42.8760111,74.5856421,14z/data=!3m1!4b1'
+
+# URL = 'https://www.google.com/maps/search/%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D1%8B%D0%B5+%D0%BA%D1%83%D1%80%D1%81%D1%8B+%D0%B2+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%D0%B5/@42.8760111,74.5856421,14z/data=!3m1!4b1'
 
 
 def get_courses(url):
@@ -71,16 +73,17 @@ def get_data(soup):
             res.append(i.strip())
 
         data.append('\n'.join(res) + f'\n{link.strip()}')
-    return '\n\n'.join(data)
+
+    return data
 
 
-def main():
-    html = get_courses(url=URL)
-    soup = get_soup(html)
-    data = get_data(soup)
-
-# bot.send_mail(chat_id, data)
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     html = get_courses(url=URL)
+#     soup = get_soup(html)
+#     data = get_data(soup)
+#
+# # bot.send_mail(chat_id, data)
+#
+#
+# if __name__ == '__main__':
+#     main()
